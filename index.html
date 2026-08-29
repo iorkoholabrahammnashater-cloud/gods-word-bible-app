@@ -49,7 +49,7 @@
       color: #000000;
       border-radius: 16px;
       padding: 20px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .card-tag {
       font-size: 10px;
@@ -69,17 +69,19 @@
     .section-title {
       font-size: 16px;
       font-weight: bold;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      margin-top: 20px;
     }
     .game-description {
       font-size: 13px;
       color: #A0AABF;
       margin-bottom: 14px;
     }
-    .game-container {
+    .game-card {
       background-color: #1C2541;
       border-radius: 16px;
-      padding: 8px;
+      padding: 12px;
+      margin-bottom: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     .placeholder-card {
@@ -88,7 +90,7 @@
       padding: 24px;
       text-align: center;
       color: #A0AABF;
-      margin-top: 20px;
+      margin-top: 15px;
     }
     .nav-bar {
       position: fixed;
@@ -129,15 +131,15 @@
     </header>
 
     <!-- HOME TAB -->
-    <div id="home-tab" class="tab-content">
+    <div id="home-tab" class="tab-content active">
       <div class="verse-card">
         <span class="card-tag">TODAY'S VERSE</span>
         <p class="verse-text">"The Lord is my shepherd; I shall not want."</p>
         <span class="verse-ref">— Psalm 23:1</span>
       </div>
       <div class="placeholder-card">
-        <h3>Welcome to Your Daily Bible Reader</h3>
-        <p>Explore today's devotions, video scripture lessons, and interactive Bible matching games below.</p>
+        <h3>Welcome Back!</h3>
+        <p>Explore today's Scripture readings, animated Bible stories, and interactive games using the navigation bar below.</p>
       </div>
     </div>
 
@@ -145,55 +147,55 @@
     <div id="bible-tab" class="tab-content">
       <div class="section-title">Holy Bible Reader</div>
       <div class="placeholder-card">
-        <h3>Scripture Library</h3>
-        <p>Select Old Testament or New Testament books to begin reading.</p>
+        <h3>Scripture Reading</h3>
+        <p>Select Old or New Testament books to begin reading.</p>
       </div>
     </div>
 
     <!-- VIDEOS TAB -->
     <div id="videos-tab" class="tab-content">
-      <div class="section-title">Bible Video Stories</div>
+      <div class="section-title">Video Library</div>
       <div class="placeholder-card">
         <h3>Animated Bible Stories</h3>
-        <p>Watch short video lessons and stories from Scripture.</p>
+        <p>Watch video lessons and stories across Old and New Testaments.</p>
       </div>
     </div>
 
     <!-- GAMES TAB -->
-    <div id="games-tab" class="tab-content active">
+    <div id="games-tab" class="tab-content">
+      
+      <!-- New Word Matching Game -->
       <div class="section-title">Bible Word Matching Game</div>
       <p class="game-description">Match the Bible characters with their correct descriptions!</p>
-      <div class="game-container">
+      <div class="game-card">
         <iframe 
           style="max-width:100%; width:100%; height:380px; border:none; border-radius:12px;" 
           src="https://wordwall.net/embed/play/118084/627/889" 
           allowfullscreen>
         </iframe>
       </div>
+
     </div>
 
     <!-- Bottom Navigation Bar -->
     <nav class="nav-bar">
-      <button class="nav-item" onclick="switchTab('home')">Home</button>
-      <button class="nav-item" onclick="switchTab('bible')">Bible</button>
-      <button class="nav-item" onclick="switchTab('videos')">Videos</button>
-      <button class="nav-item active" onclick="switchTab('games')">Games</button>
+      <button class="nav-item active" onclick="switchTab(event, 'home')">Home</button>
+      <button class="nav-item" onclick="switchTab(event, 'bible')">Bible</button>
+      <button class="nav-item" onclick="switchTab(event, 'videos')">Videos</button>
+      <button class="nav-item" onclick="switchTab(event, 'games')">Games</button>
     </nav>
   </div>
 
   <script>
-    function switchTab(tabName) {
-      // Hide all tabs
+    function switchTab(e, tabName) {
       const tabs = document.querySelectorAll('.tab-content');
       tabs.forEach(tab => tab.classList.remove('active'));
 
-      // Deactivate all nav buttons
       const navItems = document.querySelectorAll('.nav-item');
       navItems.forEach(item => item.classList.remove('active'));
 
-      // Show selected tab & set active button
       document.getElementById(tabName + '-tab').classList.add('active');
-      event.currentTarget.classList.add('active');
+      e.currentTarget.classList.add('active');
     }
   </script>
 
